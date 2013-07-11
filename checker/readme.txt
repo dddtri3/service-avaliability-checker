@@ -1,0 +1,1 @@
+git tutorial: http://www.vogella.com/articles/EGit/
