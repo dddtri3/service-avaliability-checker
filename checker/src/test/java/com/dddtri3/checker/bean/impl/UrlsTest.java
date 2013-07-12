@@ -1,4 +1,4 @@
-package com.dddtri3.checker;
+package com.dddtri3.checker.bean.impl;
 
 import junit.framework.Assert;
 
@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.dddtri3.checker.bean.Urls;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

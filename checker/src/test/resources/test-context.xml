@@ -5,10 +5,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="urls" class="com.dddtri3.checker.UrlsImpl">
+	<bean id="urls" class="com.dddtri3.checker.bean.impl.UrlsImpl" lazy-init="true">
 		<constructor-arg name="file"><ref bean="csvFile"/></constructor-arg>
 	</bean>
-	<bean id="csvFile" class="java.io.File">
+	<bean id="csvFile" class="java.io.File" lazy-init="true">
 		<constructor-arg type="String"><value>src/test/resources/urls.csv</value></constructor-arg>
 	</bean>
 </beans>

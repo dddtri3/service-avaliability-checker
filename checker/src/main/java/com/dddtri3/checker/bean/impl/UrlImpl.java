@@ -1,4 +1,6 @@
-package com.dddtri3.checker;
+package com.dddtri3.checker.bean.impl;
+
+import com.dddtri3.checker.bean.Url;
 
 public class UrlImpl implements Url {
 	private String url;

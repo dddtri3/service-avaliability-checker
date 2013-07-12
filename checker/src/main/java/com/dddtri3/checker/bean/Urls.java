@@ -1,4 +1,4 @@
-package com.dddtri3.checker;
+package com.dddtri3.checker.bean;
 
 import java.util.List;
 
