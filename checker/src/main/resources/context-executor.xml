@@ -9,7 +9,7 @@
 		<constructor-arg name="file"><ref bean="csvFile"/></constructor-arg>
 	</bean>
 	<bean id="csvFile" class="java.io.File" lazy-init="true">
-		<constructor-arg type="String"><value>src/test/resources/urls.csv</value></constructor-arg>
+		<constructor-arg type="String"><value>urls.csv</value></constructor-arg>
 	</bean>
 	<bean id="exe" class="com.dddtri3.checker.CheckExecutorImpl" lazy-init="true">
 		<constructor-arg name="executor"><ref bean="browserExe"></ref></constructor-arg>
