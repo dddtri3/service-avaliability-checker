@@ -4,7 +4,7 @@
 
 	<groupId>com.dddtri3</groupId>
 	<artifactId>checker</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>checker</name>
@@ -236,8 +236,8 @@
 					<descriptors>
 						<descriptor>zip-descriptor.xml</descriptor>
 					</descriptors>
-					<finalName>this will be the name of the output zip file </finalName>
-					<appendAssemblyId>false </appendAssemblyId>
+					<finalName>${project.build.directory}/${folder.name}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
 				<executions>
 					<execution>

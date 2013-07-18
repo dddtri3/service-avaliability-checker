@@ -3,6 +3,7 @@ package com.dddtri3.checker.bean.impl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 
 import com.dddtri3.checker.bean.Url;
 import com.dddtri3.checker.bean.Urls;
@@ -43,12 +45,35 @@ public class UrlsImpl implements Urls {
 			
 			reader.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 			System.exit(1);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 			System.exit(1);
 		}
+	}
+	
+	public boolean print(File outputFile) {
+		
+		CSVWriter writer = null;
+		
+		List<String[]> results = new LinkedList<String[]>();
+		results.add(new String[] {"time visited", "url", "title", "status"});
+		for (Url url : this.urls) {
+			results.add(url.toArray());
+		}
+		
+		try {
+			writer = new CSVWriter(new FileWriter(outputFile));
+			writer.writeAll(results);
+			writer.close();
+		} catch (IOException e) {
+			LOGGER.error(e);
+			return false;
+		}
+		
+		LOGGER.info(String.format("Saving urls result at [%s]..", outputFile.getPath()));
+		return true;
 	}
 	public List<Url> getUrls() {
 		return urls;

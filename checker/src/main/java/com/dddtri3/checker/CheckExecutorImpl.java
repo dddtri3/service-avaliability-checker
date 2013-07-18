@@ -1,5 +1,7 @@
 package com.dddtri3.checker;
 
+import java.io.File;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.dddtri3.checker.bean.Url;
@@ -11,7 +13,10 @@ public class CheckExecutorImpl implements CheckExecutor {
 		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
 		        new String[] {"context-executor.xml"});
 		CheckExecutor exe = (CheckExecutor) appContext.getBean("exe");
-		exe.execute(appContext.getBean("urls"));
+		Object urls = appContext.getBean("urls");
+		exe.beforeExecute(urls);
+		exe.execute(urls);
+		exe.afterExecute(urls);
 	}
 
 	private CheckExecutor executor;
@@ -41,6 +46,10 @@ public class CheckExecutorImpl implements CheckExecutor {
 
 	public void afterExecute(Object obj) {
 		this.executor.afterExecute(obj);
+		
+		Urls urls = (Urls) obj;
+		urls.print(new File("output.csv"));
+		
 	}
 
 }
